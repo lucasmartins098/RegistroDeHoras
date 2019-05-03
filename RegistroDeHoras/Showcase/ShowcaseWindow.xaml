@@ -1,0 +1,160 @@
+﻿<Window
+    x:Class="RegistroDeHorasDevOpsAzure.ShowcaseWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tb="http://www.hardcodet.net/taskbar"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Height="149.424"
+    Width="346.5"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:RegistroDeHorasDevOpsAzure"
+    MinWidth="200"
+    MinHeight="200"
+    ResizeMode="NoResize">
+    <Window.Resources>
+
+        <BooleanToVisibilityConverter
+            x:Key="BooleanToVisibilityConverter" />
+
+        <ObjectDataProvider
+            MethodName="GetValues"
+            ObjectType="{x:Type sys:Enum}"
+            x:Key="ActivationModes">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type
+                    TypeName="tb:PopupActivationMode" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+    </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush
+            EndPoint="0.771,0.907"
+            StartPoint="0.229,0.093">
+            <GradientStop
+                Color="#FFFFFFFF"
+                Offset="1" />
+            <GradientStop
+                Color="#FFDAE9FF" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Triggers>
+        <EventTrigger
+            RoutedEvent="tb:TaskbarIcon.TrayToolTipOpen"
+            SourceName="tb" />
+    </Window.Triggers>
+
+    <Grid
+        Hyperlink.RequestNavigate="OnNavigationRequest">
+
+
+        <!--
+      THE TASKBARICON ELEMENT WAS DECLARED INLINE IN ORDER TO USE DATABINDING
+      FOR ITS PROPERTIES. IN  A REAL-LIFE APP, YOU'D PROBABLY RATHER DECLARE
+      IT IN A RESOURCE DICTIONARY SO YOU CAN ALSO USE IT IF THERE IS NO WINDOW
+      OPEN.
+    -->
+
+        <tb:TaskbarIcon
+            x:Name="tb"
+            VerticalAlignment="Top"
+            IconSource="{Binding Path=SelectedItem.Source, ElementName=iconList, Mode=Default}"
+            ContextMenu="{StaticResource tbMenu}"
+            ToolTipText="{Binding Path=Text, ElementName=txtToolTipText, Mode=Default}"
+            Visibility="{Binding Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=iconVisibility, Mode=Default}"
+            MenuActivation="{Binding Path=SelectedItem, ElementName=lstMenuTrigger, Mode=Default}"
+            PopupActivation="{Binding Path=SelectedItem, ElementName=lstPopupTrigger, Mode=Default}"
+            DoubleClickCommandParameter="{Binding RelativeSource={RelativeSource Self}}">
+
+            <tb:TaskbarIcon.DataContext>
+                <local:NotifyIconViewModel/>
+            </tb:TaskbarIcon.DataContext>
+
+            <tb:TaskbarIcon.TrayPopup>
+                <!-- the control will be put into a popup with an explicit DataContext -->
+                <local:TaskBarRegistroDeHoras />
+            </tb:TaskbarIcon.TrayPopup>
+
+        </tb:TaskbarIcon>
+
+
+        <!-- ************************************************************************************* -->
+        <!-- ************************************************************************************* -->
+        <!-- EVERYTHING BELOW IS JUST PLUMBING FOR THE SAMPLE -->
+        <TextBlock
+            Margin="12,57.62,15.5,0"
+            VerticalAlignment="Top"
+            FontSize="14"
+            FontStyle="Italic"
+            Foreground="#FF303030"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Stretch">
+            <Run Text="- Clique no ícone para ativar uma tarefa" />
+        </TextBlock>
+        <Grid Visibility="Hidden"
+            Margin="10,114,0,0"
+            VerticalAlignment="Top"
+            Height="148"
+            x:Name="Common"
+            Width="251"
+            HorizontalAlignment="Left">
+            <Border
+                BorderThickness="2,2,2,2"
+                BorderBrush="#FF000000"
+                d:IsLocked="True" />
+            <CheckBox
+                Margin="10,35.96,0,0"
+                VerticalAlignment="Top"
+                Content="NotifyIcon Visible"
+                x:Name="iconVisibility"
+                IsChecked="True"
+                HorizontalAlignment="Left"
+                Width="155.42"
+                d:LayoutOverrides="Height" />
+            <ListBox Visibility="Hidden"
+                Margin="10,77.38,0,0"
+                IsSynchronizedWithCurrentItem="True"
+                x:Name="iconList"
+                SelectedIndex="0"
+                Width="123"
+                HorizontalAlignment="Left"
+                Height="59.971"
+                VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Image
+                    Width="16"
+                    Margin="0,4,0,0"
+                    Height="16"
+                    Source="/Icons/Infosis.ico" />
+                <Image
+                    Width="16"
+                    Margin="0,4,0,0"
+                    Height="16"
+                    Source="/Icons/Infosis.ico" />
+
+            </ListBox>
+            <TextBlock
+                Margin="10,55.38,0,61"
+                Width="Auto"
+                TextWrapping="Wrap"
+                d:LayoutOverrides="Width"
+                HorizontalAlignment="Left">
+                <Run
+                    Text="Select an image to switch icons:" />
+            </TextBlock>
+            <TextBlock
+                HorizontalAlignment="Left"
+                Margin="10,10,0,0"
+                VerticalAlignment="Top"
+                Width="Auto"
+                Height="Auto"
+                FontWeight="Bold"
+                TextDecorations="Underline"
+                TextWrapping="Wrap">
+                <Run
+                    Text="Icon / Visibility" />
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>

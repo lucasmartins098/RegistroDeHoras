@@ -1,0 +1,77 @@
+﻿<UserControl
+    x:Class="RegistroDeHorasDevOpsAzure.TaskBarRegistroDeHoras"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tb="http://www.hardcodet.net/taskbar" Height="329" Width="332" Background="Black"
+    x:Name="tb">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="RotateIcon"/>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="tb:TaskbarIcon.PopupOpened">
+            <BeginStoryboard Storyboard="{StaticResource RotateIcon}" x:Name="RotateIcon_BeginStoryboard" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="tb:TaskbarIcon.BalloonClosing">
+            <BeginStoryboard Storyboard="{StaticResource RotateIcon}"
+                             x:Name="FadeOut_BeginStoryboard" />
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Border BorderBrush="Black" BorderThickness="1">
+        <Grid Margin="2" Background="#D3D3D3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="42*"/>
+                <RowDefinition Height="97*"/>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="22*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="   Tarefa em Andamento"   Grid.ColumnSpan="4"
+            Grid.Row="0" Grid.Column="0" FontSize="20" Margin="52,0,37,37" Grid.RowSpan="2"/>
+            <DataGrid Grid.Row="5" IsReadOnly="True" Grid.ColumnSpan="4" Name="TarefasDataGrid"  AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" Margin="10,56.835,10,10.165" Grid.RowSpan="2" MouseDoubleClick="TarefasDataGrid_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Tarefa" Binding="{Binding IdTarefa}"/>
+                    <DataGridTextColumn Width="240" Header="Título" Binding="{Binding Titulo}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.ColumnSpan="4" IsReadOnly="True" Name="TarefaAndamento"  AutoGenerateColumns="False" MouseDoubleClick="TarefaAndamento_MouseDoubleClick" AlternatingRowBackground="LightBlue" Margin="10,32,10,0.5" Grid.RowSpan="3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="280" Header="Título" Binding="{Binding Titulo}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="   Tarefas Ativas"   Grid.ColumnSpan="4"
+                Grid.Row="5" Grid.Column="0" FontSize="20" Margin="80,20,85,38"/>
+            <Button x:Name="Refresh" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="53,7,0,0" Width="27" Height="20" VerticalAlignment="Top" Click="botaoAtualizar">
+                <Button.Background>
+                    <ImageBrush ImageSource="/RegistroDeHoras;component/Icons/download.png"/>
+                </Button.Background>
+            </Button>
+            <Expander Grid.ColumnSpan="2" Header="Opções" HorizontalAlignment="Left" Height="100" Grid.RowSpan="5" VerticalAlignment="Top" Width="100">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7"/>
+                        <ColumnDefinition Width="7"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="74"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" Content="Registro Manual" FontWeight="Bold" Grid.ColumnSpan="4" Click="Button_Click"/>
+                </Grid>
+            </Expander>
+        </Grid>
+    </Border>
+</UserControl>

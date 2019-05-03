@@ -1,0 +1,104 @@
+﻿<Window x:Class="RegistroDeHorasDevOpsAzure.RegistroDeHorasManual"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegistroDeHorasDevOpsAzure"
+        mc:Ignorable="d"
+        Title="Registro Manual" Height="470.17" Width="648" WindowStartupLocation="CenterScreen">
+    <Grid Background="#D3D3D3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="610*"/>
+        </Grid.ColumnDefinitions>
+        <!--<Label Grid.Row="0" Grid.Column="0" Content="Filtros:" FontWeight="Bold"/>-->
+        <!--<Label Grid.Row="1" Grid.Column="0" Content="Data Inicial" FontWeight="Bold"/>-->
+        <Expander Grid.Row="0" Grid.Column="0" IsExpanded="True" Header="Filtros" Grid.ColumnSpan="4" Margin="27,2,35,0" Grid.RowSpan="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Data Inicial" Height="26" VerticalAlignment="Top"/>
+                <DatePicker Grid.Column="0" Margin="0,24,0,5" x:Name="dataInicial"/>
+                <Label Grid.Column="1" Content="Data Final" Margin="5,0,25,24" Grid.ColumnSpan="2"></Label>
+                <DatePicker Grid.Column="1" Margin="5,24,0,5" x:Name="dataFinal" SelectedDateFormat="Long"/>
+                <Grid Grid.Column="3" Grid.Row="0" Margin="2" Background="WhiteSmoke">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Content="Tipo da Tarefa" Grid.ColumnSpan="4" Margin="76,-5,25,5"/>
+                    <RadioButton x:Name="NaoFaturado" Content="Não Faturado" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"></RadioButton>
+                    <RadioButton x:Name="Operacional" Content="Operacional" Grid.Column="3" Grid.Row="1"></RadioButton>
+                    <RadioButton x:Name="Ambos" Content="Ambos" Grid.Column="5" Grid.Row="1" Margin="0,0,10,0" IsChecked="True"></RadioButton>
+                </Grid>
+                <Button Grid.Row="1" Grid.Column="0" Content="Filtrar" Background="WhiteSmoke" Click="Button_Click"></Button>
+            </Grid>
+        </Expander>
+        <DataGrid Name="Tarefas" Height="247" Margin="10,77,10,-284" Grid.Row="3" CanUserAddRows="False" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" Grid.ColumnSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="Auto" Header="Id Tarefa" Binding="{Binding IdTarefa}"/>
+                <DataGridTextColumn Width="Auto" Header="Descrição" Binding="{Binding Descricao}"/>
+                <DataGridTextColumn Width="Auto" Header="Início" Binding="{Binding inicio}"/>
+                <DataGridTextColumn Width="Auto" Header="Fim" Binding="{Binding Fim}"/>
+                <DataGridTextColumn Width="Auto" Header="Data" Binding="{Binding Data}"/>
+                <DataGridTextColumn Width="Auto" Header="QtdHoras" Binding="{Binding QtdHoras}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="32" Height="24" Margin="28,50,0,-30">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/Add.png"/>
+            </Button.Background>
+        </Button>
+        <Button HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="32" Height="24" Margin="65,50,0,-31" Grid.ColumnSpan="3">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/Remove.png"/>
+            </Button.Background>
+        </Button>
+        <!--<Label Grid.Row="2" Grid.Column="0" Content="Borda" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,0,31,0"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Sim" Grid.ColumnSpan="2" Margin="1,0,88.911,0"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Massa" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,0,31,0"/>
+        <Label Grid.Row="3" Grid.Column="1" Content="Fina" Grid.ColumnSpan="2" Margin="1,0,88.911,0"/>-->
+
+        <Grid>
+            <WindowsFormsHost Margin="284,123,-401,-123">
+                <wf:DateTimePicker Format="Long">
+
+                </wf:DateTimePicker>
+
+            </WindowsFormsHost>
+
+        </Grid>
+
+
+    </Grid>
+</Window>
