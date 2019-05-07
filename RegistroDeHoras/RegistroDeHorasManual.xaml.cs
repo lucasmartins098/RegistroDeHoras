@@ -62,5 +62,11 @@ namespace RegistroDeHorasDevOpsAzure
         {
             this.CarregarGrid();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Atividade atividade = new Atividade();
+            atividade.Show();
+        }
     }
 }

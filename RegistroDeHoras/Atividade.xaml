@@ -6,8 +6,8 @@
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:local="clr-namespace:RegistroDeHorasDevOpsAzure"
         mc:Ignorable="d"
-        Title="Atividade" Height="450" Width="800">
-    <Grid Background="#D3D3D3" Margin="1,0,-1,0">
+        Title="Atividade" Height="377" Width="755" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="#D3D3D3" Margin="1,0,2,0" Width="Auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -23,7 +23,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="4" Grid.Row="0" Margin="2,2,492,2" Background="WhiteSmoke">
+        <Grid Grid.Row="0" Margin="4,2,524,2" Background="WhiteSmoke" Grid.ColumnSpan="2" Grid.Column="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -39,29 +39,75 @@
             <RadioButton x:Name="Operacional" Content="Operacional" Grid.Column="3" Grid.Row="1"/>
         </Grid>
 
-        <Label Grid.Column="0" Content="ID Tarefa" Grid.Row="1" Margin="6,0,4,0"/>
+        <Label Grid.Column="0" Content="ID Tarefa" Grid.Row="1" Margin="7,2,3,26" Grid.RowSpan="2"/>
         <TextBox Grid.Row="2" Grid.Column="0" Width="Auto" Grid.ColumnSpan="5" Margin="10,0,670,0"/>
-
-        <Label Grid.Column="4" Content="Descrição" Grid.Row="1" Margin="62,3,567,16" Grid.RowSpan="2" RenderTransformOrigin="0.79,0.486"/>
-        <TextBox Grid.Row="2" Grid.Column="4" Width="Auto" Margin="67.4,1,36.4,1" RenderTransformOrigin="0.497,-0.298" Height="25"/>
+        <Label Grid.Column="4" Content="Descrição" Grid.Row="1" Margin="43,4,585,0"/>
+        <TextBox Grid.Row="2" Grid.Column="4" Width="Auto" Margin="47,0,68,0" RenderTransformOrigin="0.497,-0.298" Height="27" VerticalAlignment="Top"/>
 
         <Label Grid.Column="0" Content="Ordem de Serviço" Grid.Row="3" Grid.ColumnSpan="5" Margin="6,0,688,0"/>
         <TextBox Grid.Row="4" Grid.Column="0" Width="Auto" Grid.ColumnSpan="5" Margin="10,0,670,0"/>
 
-        <Label Grid.Column="4" Content="Fase Ordem de Serviço" Grid.Row="3" Margin="62,0,491,0"/>
-        <TextBox Grid.Row="4" Grid.Column="4" Margin="67.4,0,36.4,0"/>
-        <Label Grid.Column="0" Content="Data" Grid.Row="4" Grid.ColumnSpan="5" Margin="6,23,688.4,-31"/>
-        <DatePicker Grid.Row="4" Grid.Column="0" Width="Auto" Grid.ColumnSpan="5" Margin="10,50,670.4,-50"/>
-        <Label Grid.Column="4" Content="QTD Horas" Grid.Row="4" Margin="61.4,23,532.4,-31"/>
-        <TextBox Grid.Row="4" Grid.Column="4" Width="Auto" Margin="67.4,50,538.4,-50"/>
-        <Label Grid.Column="4" Content="Início" Grid.Row="4" Margin="194.4,23,399.4,-31"/>
-        <DatePicker Grid.Row="4" Grid.Column="4" Width="Auto" Margin="198.4,50,381.4,-50"/>
-        <Label Content="Fim" Grid.Row="4" Margin="10,80,676.4,-88" Grid.ColumnSpan="5"/>
-        <DatePicker Grid.Row="4" Width="Auto" Margin="15,107,658.4,-107" Grid.ColumnSpan="5"/>
+        <Label Grid.Column="4" Content="Fase Ordem de Serviço" Grid.Row="3" Margin="42,0,511,0"/>
+        <TextBox Grid.Row="4" Grid.Column="4" Margin="47,0,68,0"/>
+        <Label Grid.Column="0" Content="Data" Grid.Row="4" Grid.ColumnSpan="5" Margin="6,29,688,-37"/>
+        <DatePicker Grid.Row="4" Grid.Column="0" Width="Auto" Grid.ColumnSpan="5" Margin="10,56,584.4,-56"/>
+        <Label Grid.Column="4" Content="QTD Horas" Grid.Row="4" Margin="136.2,29,456.4,-37"/>
+        <TextBox Grid.Row="4" Grid.Column="4" Width="Auto" Margin="140,56,68,-56"/>
 
 
+        <Grid Grid.Row="4" Margin="280.2,103,54.6,-172" Background="WhiteSmoke" Grid.Column="4" Width="349" Height="94">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <!--<Label Grid.Row="0" Content="Tipo da Tarefa" Grid.ColumnSpan="3" Margin="53,-5,48,5"/>
+            <RadioButton x:Name="NaoFaturado" Content="Não Faturado" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"/>
+            <RadioButton x:Name="Operacional" Content="Operacional" Grid.Column="3" Grid.Row="1"/>-->
+            <Label Grid.Column="0" Content="Data" Margin="-3,38,139,-31" Grid.Row="2"/>
+            <DatePicker Grid.Row="2" Width="Auto" Margin="2,61,36,-53"/>
+            <Label Grid.Column="1" Content="Horário" Margin="13,36,-58,-29" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <Label Grid.Column="0" Content="Início" Margin="148,0,0,5" Grid.Row="2" RenderTransformOrigin="0.098,0.517" Grid.ColumnSpan="3" FontSize="16"/>
+        </Grid>
+        <Grid Grid.Row="4" Margin="10,103,440.6,-172" Background="WhiteSmoke" RenderTransformOrigin="0.474,0.457" Grid.ColumnSpan="5" Height="94" Width="349">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <!--<Label Grid.Row="0" Content="Tipo da Tarefa" Grid.ColumnSpan="3" Margin="53,-5,48,5"/>
+            <RadioButton x:Name="NaoFaturado" Content="Não Faturado" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"/>
+            <RadioButton x:Name="Operacional" Content="Operacional" Grid.Column="3" Grid.Row="1"/>-->
+            <Label Grid.Column="0" Content="Data" Margin="-3,38,139,-31" Grid.Row="2"/>
+            <DatePicker Grid.Row="2" Width="Auto" Margin="2,61,34,-53"/>
+            <Label Grid.Column="2" Content="Horário" Margin="10,36,-74,-29" Grid.Row="2"/>
+            <Label Grid.Column="0" Content="Fim" Margin="136,0,0,6" RenderTransformOrigin="0.098,0.517" Grid.RowSpan="2" Grid.Row="1" FontSize="16"/>
+        </Grid>
 
 
+        <Grid>
+            <WindowsFormsHost Margin="211,297,-246,-278" RenderTransformOrigin="0.503,1.045">
+                <wf:DateTimePicker Format="Time" Width="30"/>
+
+            </WindowsFormsHost>
+            <WindowsFormsHost Margin="578,296,-616,-277" RenderTransformOrigin="0.503,1.045">
+                <wf:DateTimePicker Format="Time" Width="30"/>
+
+            </WindowsFormsHost>
+
+        </Grid>
+        <TextBox HorizontalAlignment="Left" Height="52" Margin="237,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="405" Grid.Column="4" Grid.RowSpan="2"/>
+        <Label Content="Observação" Margin="231.2,-5,400.6,19" Grid.Column="4"/>
 
 
 

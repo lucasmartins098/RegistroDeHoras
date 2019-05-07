@@ -74,7 +74,7 @@
                 <DataGridTextColumn Width="Auto" Header="QtdHoras" Binding="{Binding QtdHoras}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="32" Height="24" Margin="28,50,0,-30">
+        <Button HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="32" Height="24" Margin="28,50,0,-30" Click="Button_Click_1">
             <Button.Background>
                 <ImageBrush ImageSource="Images/Add.png"/>
             </Button.Background>
@@ -88,17 +88,5 @@
         <Label Grid.Row="2" Grid.Column="1" Content="Sim" Grid.ColumnSpan="2" Margin="1,0,88.911,0"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Massa" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0,0,31,0"/>
         <Label Grid.Row="3" Grid.Column="1" Content="Fina" Grid.ColumnSpan="2" Margin="1,0,88.911,0"/>-->
-
-        <Grid>
-            <WindowsFormsHost Margin="284,123,-401,-123">
-                <wf:DateTimePicker Format="Long">
-
-                </wf:DateTimePicker>
-
-            </WindowsFormsHost>
-
-        </Grid>
-
-
     </Grid>
 </Window>
